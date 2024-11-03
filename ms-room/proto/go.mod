@@ -1,4 +1,5 @@
-module ms-room
+module github.com/ElMatoi/protos/ms-room/proto
+
 
 go 1.21
 
