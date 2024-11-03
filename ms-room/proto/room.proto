@@ -1,7 +1,8 @@
 syntax = "proto3";
 
 package room;
-option go_package = "ms-room/proto;room";
+option go_package = "github.com/ElMatoi/protos/ms-room/proto;room";
+
 
 message Room {
     string id = 1;
