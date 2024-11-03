@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package room;
+option go_package = "ms-room/proto;room";
+
+message Room {
+    string id = 1;
+    string number_study_room = 2;
+    repeated Equipment equipments = 3;
+}
+
+message Equipment {
+    string id = 1;
+    EquipmentType type = 2;
+    string description = 3;
+    int32 cant_max = 4;
+    int32 cant_chair = 5;
+    int32 cant_table = 6;
+}
+
+enum EquipmentType {
+    EQUIPMENT_TYPE_UNSPECIFIED = 0;
+    EQUIPMENT_PROJECTOR = 1;
+    EQUIPMENT_WHITEBOARD = 2;
+    EQUIPMENT_COMPUTER = 3;
+}
+
+message CreateRoomRequest {
+    Room room = 1;
+}
+
+message CreateRoomResponse {
+    Room room = 1;
+}
+
+message GetRoomRequest {
+    string id = 1;
+}
+
+message GetRoomResponse {
+    Room room = 1;
+}
+
+message UpdateRoomRequest {
+    Room room = 1;
+}
+
+message UpdateRoomResponse {
+    Room room = 1;
+}
+
+message DeleteRoomRequest {
+    string id = 1;
+}
+
+message DeleteRoomResponse {
+    string message = 1;
+}
+
+service RoomService {
+    rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+    rpc GetRoom(GetRoomRequest) returns (GetRoomResponse);
+    rpc UpdateRoom(UpdateRoomRequest) returns (UpdateRoomResponse);
+    rpc DeleteRoom(DeleteRoomRequest) returns (DeleteRoomResponse);
+}
